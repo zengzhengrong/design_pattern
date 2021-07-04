@@ -22,19 +22,19 @@ type passengerTrain struct {
 
 func (g *passengerTrain) arrive() {
 	if !g.mediator.canArrive(g) {
-		fmt.Println("PassengerTrain: Arrival blocked, waiting")
+		fmt.Println("PassengerTrain: 等待前方车辆")
 		return
 	}
-	fmt.Println("PassengerTrain: Arrived")
+	fmt.Println("PassengerTrain: 已到达")
 }
 
 func (g *passengerTrain) depart() {
-	fmt.Println("PassengerTrain: Leaving")
+	fmt.Println("PassengerTrain: 已离开")
 	g.mediator.notifyAboutDeparture()
 }
 
 func (g *passengerTrain) permitArrival() {
-	fmt.Println("PassengerTrain: Arrival permitted, arriving")
+	fmt.Println("PassengerTrain: 前方已驶出, 进入车站")
 	g.arrive()
 }
 
@@ -45,19 +45,21 @@ type freightTrain struct {
 
 func (g *freightTrain) arrive() {
 	if !g.mediator.canArrive(g) {
-		fmt.Println("FreightTrain: Arrival blocked, waiting")
+		fmt.Println("FreightTrain: 等待前方车辆")
 		return
 	}
-	fmt.Println("FreightTrain: Arrived")
+	// logic
+	fmt.Println("FreightTrain: 已到达")
 }
 
 func (g *freightTrain) depart() {
-	fmt.Println("FreightTrain: Leaving")
+	fmt.Println("FreightTrain: 已离开")
+	// logic
 	g.mediator.notifyAboutDeparture()
 }
 
 func (g *freightTrain) permitArrival() {
-	fmt.Println("FreightTrain: Arrival permitted")
+	fmt.Println("FreightTrain: 前方已驶出, 进入车站")
 	g.arrive()
 }
 
