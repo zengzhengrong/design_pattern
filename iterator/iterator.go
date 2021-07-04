@@ -17,15 +17,16 @@ func (a *ArrayIterator) Index() *int {
 }
 
 func (a *ArrayIterator) Value() interface{} {
+
 	return a.array[*a.index]
 }
 
 func (a *ArrayIterator) HasNext() bool {
-	return *a.index+1 <= len(a.array)
+	return *a.index+2 <= len(a.array)
 }
 
 func (a *ArrayIterator) Next() {
 	if a.HasNext() {
-		*a.index++
+		*a.index = *a.index + 2
 	}
 }
